@@ -4,4 +4,4 @@ def is_primo(n):
             return False
     return True
     
-is_primo(input())
+    
