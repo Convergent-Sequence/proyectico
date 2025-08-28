@@ -47,10 +47,10 @@ jobs:
       - name: Deploy or Update Lambda with Zappa
         run: |
           source env/bin/activate
-          if zappa status dev; then
-            echo "Updating existing Zappa deployment..."
+          if aws lambda get-function --function-name proyectoprueba-dev > /dev/null 2>&1; then
+            echo "Lambda exists, running update..."
             zappa update dev
           else
-            echo "No existing Zappa deployment found. Deploying..."
+            echo "Lambda does not exist, running deploy..."
             zappa deploy dev
           fi
