@@ -8,8 +8,7 @@
             "botocore",
             "s3transfer",
             "concurrent"
-        ],
-        "profile_name": "default",
+        ]
         "project_name": "proyectos",
         "runtime": "python3.10",
         "s3_bucket": "zappa-1kvuqnx1w",
