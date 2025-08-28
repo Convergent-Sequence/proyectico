@@ -44,5 +44,13 @@ jobs:
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
             aws-region: us-east-1
-      - name: List buckets
-        run: aws s3 cp utils.py s3://ejemplo-bucket-s3.1/utils/
+      - name: Deploy or Update Lambda with Zappa
+        run: |
+          source env/bin/activate
+          if zappa status dev; then
+            echo "Updating existing Zappa deployment..."
+            zappa update dev
+          else
+            echo "No existing Zappa deployment found. Deploying..."
+            zappa deploy dev
+          fi
